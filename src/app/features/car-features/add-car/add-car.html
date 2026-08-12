@@ -1,0 +1,23 @@
+
+<div>
+
+    <div>
+        <label>Brand</label>
+        <input type="text" [(ngModel)]="newCar.brand">
+    </div>
+        <div>
+        <label>Puissance</label>
+        <input type="number" [(ngModel)]="newCar.puissance">
+    </div>
+        <div>
+        <label>Color</label>
+        <input type="text" [(ngModel)]="newCar.color">
+    </div>
+
+    <div>
+        <label>Image</label>
+        <input type="text" [(ngModel)]="newCar.imageUrl">
+    </div>
+
+    <button (click)="addCar()">Add</button>
+</div>
