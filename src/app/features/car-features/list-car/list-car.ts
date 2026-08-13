@@ -32,6 +32,6 @@ export class ListCar implements OnInit{
 
   navigateToDetails(id : number){
     // redirection avec le paramètres ID attendu sur la route "details" : app.routes
-    this.router.navigate(['/details-car',id])
+    this.router.navigate(['/details-car',id]) 
   }
 }
