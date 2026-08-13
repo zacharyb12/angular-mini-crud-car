@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Car } from '../../../features/car-features/car.model';
+import { AddCarModel, Car, UpdateCarModel } from '../../../features/car-features/car.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +22,18 @@ export class CarService {
     return this.listCar
   }
 
-  addCar(newCar : Car){
-    newCar.id = this.lastId
+  addCar(newCar : AddCarModel){
 
-    this.listCar.update((list) => [...list,newCar])
+    const newCarToAdd : Car = {
+      id : this.lastId,
+      brand: newCar.brand,
+      color: newCar.color,
+      puissance: newCar.puissance,
+      imageUrl: newCar.imageUrl
+    }
+    
+
+    this.listCar.update((list) => [...list,newCarToAdd])
 
     this.lastId++
   }
@@ -44,7 +52,13 @@ export class CarService {
     return this.listCar()[index]
   }
 
-  updateCar(){
-    
+  updateCar(updatedCar : UpdateCarModel,id : number){
+
+    const index = this.listCar().findIndex((c) => c.id === id)
+
+    this.listCar()[index].color = updatedCar.color
+    this.listCar()[index].puissance = updatedCar.puissance
+    this.listCar()[index].imageUrl = updatedCar.imageUrl
+
   }
 }

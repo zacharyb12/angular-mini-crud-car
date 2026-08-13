@@ -1,10 +1,19 @@
-<p>details-car works!</p>
+<h4>Details</h4>
 
 @if(car){
+<div class="card-details">
+    <div class="d-flex">
+        <div class="d-block">
+            <p>Id : {{car.id}}</p>
+            <p>{{car.brand}}</p>
+            <p>{{car.puissance}}</p>
+            <p>{{car.color}}</p>
+        </div>
+        <img [src]="car.imageUrl" [alt]="car.brand">
 
-    <p>Id : {{car.id}}</p>
-    <p>{{car.brand}}</p>
-    <p>{{car.puissance}}</p>
+    </div>
+    <button (click)="navigateToUpdate()" class="button">Update</button>
+</div>
 }
 @else{
     <p>vehicule indisponible</p>

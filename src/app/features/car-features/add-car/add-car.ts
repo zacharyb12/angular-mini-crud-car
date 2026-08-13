@@ -1,32 +1,40 @@
 import { Component, inject } from '@angular/core';
-import { Car } from '../car.model';
+import { AddCarModel, Car } from '../car.model';
 import { CarService } from '../../../core/services/car/car-service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-car',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './add-car.html',
   styleUrl: './add-car.css',
 })
 export class AddCar {
 
-  newCar : Car = {
-    id: 0,
-    brand: '',
-    color: '',
-    puissance: 0,
-    imageUrl: ''
-  }
+  formGroupCar : FormGroup;
+
+  fb = inject(FormBuilder)
 
   carService = inject(CarService)
-
+  
   router = inject(Router)
+  
+  constructor(){
+    this.formGroupCar = this.fb.group({
+      brand : ['',[Validators.required]],
+      color : ['',[Validators.required]],
+      puissance : [0,[Validators.required]],
+      imageUrl : ['',[Validators.required]],
+    })
+  }
 
-  addCar(){
-    this.carService.addCar(this.newCar)
+  addCar(){   
+   if(this.formGroupCar.valid){
 
-    this.router.navigateByUrl('/list-car')
+     this.carService.addCar(this.formGroupCar.value)
+     
+     this.router.navigateByUrl('/list-car')
+    }
   }
 }

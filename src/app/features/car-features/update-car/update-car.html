@@ -1,14 +1,8 @@
-<h4>Add vehicule</h4>
+<p>update-car works!</p>
 
-<form [formGroup]="formGroupCar" (ngSubmit)="addCar()">
+<form [formGroup]="formUpdate" (ngSubmit)="updateCar()">
 
     <div>
-        <label>Brand</label>
-        <br>
-        <input type="text" formControlName="brand">
-    </div>
-
-        <div>
         <label>Color</label>
         <br>
         <input type="text" formControlName="color">
@@ -17,7 +11,7 @@
         <div>
         <label>Puissance</label>
         <br>
-        <input type="number" formControlName="puissance">
+        <input type="text" formControlName="puissance">
     </div>
 
         <div>
@@ -26,5 +20,5 @@
         <input type="text" formControlName="imageUrl">
     </div>
 
-    <button type="submit">Add</button>
+    <button type="submit">Update</button>
 </form>

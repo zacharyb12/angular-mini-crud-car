@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Car } from '../car.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../../../core/services/car/car-service';
 
 @Component({
@@ -16,6 +16,9 @@ export class DetailsCar implements OnInit {
   
   // permet de faire appel au methode de CarService
   carService = inject(CarService)
+
+  // router pour permettre la redirection ( avec un parmètre )
+  router = inject(Router)
 
 // l'objet à afficher , qui est vide tant que l'on à pas récupérer les informations du service
   car : Car | null = {
@@ -34,4 +37,7 @@ export class DetailsCar implements OnInit {
     this.car = this.carService.getCarById(id) ?? null
   }
 
+  navigateToUpdate(){
+    this.router.navigate(['/update-car',this.car?.id])
+  }
 }
