@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Car } from '../car.model';
 import { ActivatedRoute } from '@angular/router';
 import { CarService } from '../../../core/services/car/car-service';
@@ -9,15 +9,15 @@ import { CarService } from '../../../core/services/car/car-service';
   templateUrl: './details-car.html',
   styleUrl: './details-car.css',
 })
-export class DetailsCar implements OnInit{
-
+export class DetailsCar implements OnInit {
+  
   // permet de récupérer une informations au travers de la route
   activatedRoute = inject(ActivatedRoute)
-
+  
+  // permet de faire appel au methode de CarService
   carService = inject(CarService)
-  id = signal<number>(0)
 
-
+// l'objet à afficher , qui est vide tant que l'on à pas récupérer les informations du service
   car : Car | null = {
     id : 0,
     brand : '',
@@ -25,13 +25,13 @@ export class DetailsCar implements OnInit{
     color : '',
     imageUrl : ''
   }
-
+  
+  // permet d'exécuter un ensemble d'actions lors de la création du composant
   ngOnInit(): void {
     // on récupère l'information de la route
     const id = +this.activatedRoute.snapshot.params['id']
-    this.id.set(id)
     
-
     this.car = this.carService.getCarById(id) ?? null
   }
+
 }

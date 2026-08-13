@@ -5,6 +5,7 @@ import { Car } from '../../../features/car-features/car.model';
   providedIn: 'root',
 })
 export class CarService {
+
   listCar = signal<Car[]>([
     {
       id : 1,
@@ -41,5 +42,9 @@ export class CarService {
     }
 
     return this.listCar()[index]
+  }
+
+  updateCar(){
+    
   }
 }

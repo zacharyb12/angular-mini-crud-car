@@ -8,6 +8,6 @@ export const routes: Routes = [
     { path : '',  component : Homepage },
     { path : 'list-car' , component : ListCar},
     { path : 'add-car' , component : AddCar},
-    // ici on passe un id par la route
+    // ici on défini qu'un paramètre id sera transmis par la route
     { path : 'details-car/:id' , component : DetailsCar},
 ];
