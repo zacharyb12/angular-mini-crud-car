@@ -12,7 +12,9 @@
         <img [src]="car.imageUrl" [alt]="car.brand">
 
     </div>
-    <button (click)="navigateToUpdate()" class="button">Update</button>
+    @if(isAdmin()){
+        <button (click)="navigateToUpdate()" class="button">Update</button>
+    }
 </div>
 }
 @else{

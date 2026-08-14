@@ -6,6 +6,12 @@
         <label>Brand</label>
         <br>
         <input type="text" formControlName="brand">
+        @if(formGroupCar.get('brand')?.hasError('required') && formGroupCar.get('brand')?.dirty){
+            <p class="font-red">La marque du véhicule est obligatoire</p>
+        }
+        @if(formGroupCar.get('brand')?.hasError('minlength') && formGroupCar.get('brand')?.dirty){
+             <p class="font-red">La marque du véhicule doit faire au moins 3 caractères</p>
+        }
     </div>
 
         <div>

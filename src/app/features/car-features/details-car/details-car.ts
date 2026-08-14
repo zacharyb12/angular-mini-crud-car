@@ -2,6 +2,7 @@ import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Car } from '../car.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../../../core/services/car/car-service';
+import { AuthService } from '../../../core/services/auth/auth-service';
 
 @Component({
   selector: 'app-details-car',
@@ -16,6 +17,11 @@ export class DetailsCar implements OnInit {
   
   // permet de faire appel au methode de CarService
   carService = inject(CarService)
+
+  authService = inject(AuthService)
+  isAdmin = this.authService.isAdmin
+
+
 
   // router pour permettre la redirection ( avec un parmètre )
   router = inject(Router)
