@@ -24,7 +24,7 @@ export class AddCar {
     this.formGroupCar = this.fb.group({
       brand : ['',[Validators.required,Validators.minLength(3)]],
       color : ['',[Validators.required]],
-      puissance : [0,[Validators.required]],
+      puissance : [0,[Validators.required,Validators.min(0)]],
       imageUrl : ['',[Validators.required]],
     })
   }

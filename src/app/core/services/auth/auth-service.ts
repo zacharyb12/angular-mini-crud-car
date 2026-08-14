@@ -6,12 +6,14 @@ import { LoginForm, RegisterForm } from '../../../features/auth-features/auth.mo
 })
 export class AuthService {
 
+  
 
   isLogged = signal<boolean>(false)
   isAdmin = signal<boolean>(false)
 
   constructor(){
-    // récupération depuis le localStorage
+    // ici on vérifie si une informations est présente dans le localstorage afin de remettre les valeurs si besoin
+    // récupération depuis le localStorage en utilisant la clé
     if(localStorage.getItem('isLogged') === 'true'){
       this.isLogged.update((v) => !v)
     }
