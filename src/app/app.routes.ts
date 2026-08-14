@@ -17,7 +17,7 @@ export const routes: Routes = [
             { path : 'test2' , component : ListCar},
         ]
     },
-    { path : 'add-car' , component : AddCar , canActivate : [adminGuard], canDeactivate : []}, // accès limité
+    { path : 'add-car' , component : AddCar , canActivate : [adminGuard], canDeactivate : [quitGuard]}, // accès limité
     // ici on défini qu'un paramètre id sera transmis par la route
     { path : 'details-car/:id' , component : DetailsCar , canActivate : [loggedGuard]},
     { path : 'update-car/:id' , component : UpdateCar , canActivate : [adminGuard]}, // accès limité
