@@ -6,8 +6,6 @@ import { LoginForm, RegisterForm } from '../../../features/auth-features/auth.mo
 })
 export class AuthService {
 
-  
-
   isLogged = signal<boolean>(false)
   isAdmin = signal<boolean>(false)
 
